@@ -28,6 +28,6 @@
 
 Maintainer: [Luc Coupal](https://redleader962.github.io)
 
-This repository is used for [dockerized-norlab](https://github.com/norlab-ulaval/dockerized-norlab/tree/main) development purpose
+This repository is used for [dockerized-norlab](https://github.com/norlab-ulaval/dockerized-norlab) and [norlab-build-system](https://github.com/norlab-ulaval/norlab-build-system) development purpose
 
 ---
