@@ -1,33 +1,56 @@
 <div align="center">
+
+[//]: # ( ==== Logo ================================================== )
 <br>
 <br>
 <a href="https://norlab.ulaval.ca">
-<img src="visual/norlab_logo_acronym_dark.png" width="200">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/visual/norlab_logo_acronym_light.png">
+      <source media="(prefers-color-scheme: light)" srcset="/visual/norlab_logo_acronym_dark.png">
+      <img alt="Shows an the dark NorLab logo in light mode and light NorLab logo in dark mode." src="/visual/norlab_logo_acronym_dark.png" width="175">
+    </picture>
 </a>
+<br>
+
+[//]: # ( ==== Title ================================================= )
 <br>
 
 # _Dockerized-NorLab Project Mock_
 
-</div>
-
-
-[//]: # (<b>Project related link: </b> &nbsp; )
-
-[//]: # (Project related link:)
-<div align="center">
-<p>
+[//]: # ( ==== Hyperlink ============================================= )
 <sup>
-<a href="https://http://132.203.26.125:8111">NorLab TeamCity GUI</a>
-(VPN or intranet access) &nbsp; • &nbsp;  
+<a href="http://132.203.26.125:8111">NorLab TeamCity GUI</a>
+(VPN/intranet access) &nbsp; • &nbsp;
 <a href="https://hub.docker.com/repositories/norlabulaval">norlabulaval</a>
 (Docker Hub) &nbsp;
+<a href="https://github.com/dusty-nv/jetson-containers">Jetson-Containers</a> 
+&nbsp; • &nbsp;
 </sup>
-</p>  
+<br>
+<br>
+
+[//]: # ( ==== Description =========================================== )
+**This repository is used for [dockerized-norlab](https://github.com/norlab-ulaval/dockerized-norlab) and [norlab-build-system](https://github.com/norlab-ulaval/norlab-build-system) development purpose**
+<br>
+<br>
+
+[//]: # ( ==== Badges ================================================ )
+
+<img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/norlab-ulaval/dockerized-norlab-project-mock">
+
+
+
+<br>
+
+[//]: # ( ==== Maintainer ============================================ )
+<sub>
+Maintainer <a href="https://redleader962.github.io">Luc Coupal</a>
+</sub>
+
+<br>
+<hr style="color:lightgray;background-color:lightgray">
 </div>
 
 
-Maintainer: [Luc Coupal](https://redleader962.github.io)
+[//]: # ( ==== Body ================================================== )
 
-This repository is used for [dockerized-norlab](https://github.com/norlab-ulaval/dockerized-norlab) and [norlab-build-system](https://github.com/norlab-ulaval/norlab-build-system) development purpose
-
----
