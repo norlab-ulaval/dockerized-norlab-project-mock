@@ -38,8 +38,7 @@
 
 <img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/norlab-ulaval/dockerized-norlab-project-mock">
 
-
-
+<br>
 <br>
 
 [//]: # ( ==== Maintainer ============================================ )
