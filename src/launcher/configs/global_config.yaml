@@ -3,7 +3,7 @@ comment: "" # Note: Leave empty. Usefull to add commentary to command line execu
 experiment_name: "default" # Note: Overide in your <app-name>.yaml
 
 # ....DN-project directories.............
-project_root_path: ${oc.env:DN_PROJECT_PATH,../../mock-user-super-project}
+project_root_path: ${oc.env:DN_PROJECT_PATH,../../dockerized-norlab-project-mock}
 # Note: fetch environment variable via omegaconf resolver `${oc.env:<env-var>, <default-value>}`
 #  See doc https://omegaconf.readthedocs.io/en/2.3_branch/custom_resolvers.html#oc-env
 exp_root_dir: "artifact"
