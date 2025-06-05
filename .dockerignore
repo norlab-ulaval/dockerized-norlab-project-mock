@@ -22,7 +22,7 @@
 **/slurm_jobs/out/*.out
 
 # ....Dockerized-NorLab (Prevent ignore)...........................................................
-!**/.dockerized_norlab_project/
+#!**/.dockerized_norlab_project/
 
 # ....Repository related...........................................................................
 !**/version.txt
