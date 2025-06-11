@@ -20,6 +20,7 @@ PYTEST_FLAG+=(--reruns 5 --reruns-delay 2.5)
 
 # ....Add per project specific flag................................................................
 #PYTEST_FLAG+=(--ignore="${DN_PROJECT_PATH}/src/ros2_packages")
+#PYTEST_FLAG+=(-k 'not test_python_interpreter_has_ros') # Skip those tests
 PYTEST_FLAG+=(-k "test_try_pytorch") # Only run test matching this expression
 
 # ====Execute pytest command=======================================================================
