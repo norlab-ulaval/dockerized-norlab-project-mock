@@ -1,7 +1,7 @@
 
 # ====Dockerized-NorLab(required)==================================================================
-**/.dockerized_norlab_project/dn_container_env_variable/
-**/.dockerized_norlab_project/configuration/.env.local
+**/.dockerized_norlab/dn_container_env_variable/
+**/.dockerized_norlab/configuration/.env.local
 
 # ====Dockerized-NorLab(recommended)===============================================================
 **/external_data/
@@ -22,6 +22,10 @@
 
 # ....Log..........................................................................................
 **/*.out
+
+# ....Jetbrains....................................................................................
+/.idea/
+/.vagrant/*
 
 # ....General......................................................................................
 **/.DS_Store
