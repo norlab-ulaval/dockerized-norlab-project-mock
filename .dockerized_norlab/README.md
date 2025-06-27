@@ -4,7 +4,7 @@ Reference: https://github.com/norlab-ulaval/dockerized-norlab-project.git
 ## Usage
 
 1. Setup/validate `.dockerized_norlab/configuration/` files: 
-   - Setup dotenv files: `.env`, `.env.dnp` and `.env.local`;
+   - Setup dotenv files: `.env`, `.env.dna` and `.env.local`;
    - Customize files in `project_requirements/`;
    - Customize files in `project_entrypoints/`. Add
       project-specific container runtime logic;
@@ -12,17 +12,17 @@ Reference: https://github.com/norlab-ulaval/dockerized-norlab-project.git
    - Check `.dockerized_norlab/configuration/README.md` for more details.
 2. From your project `root`, execute the following
    ```shell
-   dnp help 
+   dna help 
    
    # Build your DN-project containers 
-   dnp build 
+   dna build 
    
    # Start your DN-project containers 
-   dnp up
+   dna up
    
    # Have fun
    # When your done, execute 
-   dnp down
+   dna down
    ```
 
 ## Requirements:
@@ -41,7 +41,7 @@ Reference: https://github.com/norlab-ulaval/dockerized-norlab-project.git
 - Make sure `rsync` DO copy the `.git` directory to the remote host i.e. check if it is in the rsync excluded item list 
 - **Remote display**:
   - Start your DN container project using script `src/lib/core/execute/up_and_attach.bash`
-  - In the remote docker container terminal, execute command alias `dn_expose_container_env_variables` and download `.dockerized_norlab/dn_container_env_variable/.env.dn_expose_IamDNPuser-mock`  to your source machine
+  - In the remote docker container terminal, execute command alias `dn_expose_container_env_variables` and download `.dockerized_norlab/dn_container_env_variable/.env.dn_expose_IamDNAuser-mock`  to your source machine
    and set `Paths to ".env" files` in run configuration window 
     ![set_interpreter_env.png](visual/set_run_config_env.png)
 
