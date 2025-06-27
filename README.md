@@ -15,7 +15,7 @@
 [//]: # ( ==== Title ================================================= )
 <br>
 
-# _Dockerized-NorLab Project Mock_
+# _Dockerized-NorLab project application (DNA) Mock_
 
 [//]: # ( ==== Hyperlink ============================================= )
 <sup>
