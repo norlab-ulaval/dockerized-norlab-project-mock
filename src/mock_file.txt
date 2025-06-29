@@ -1,0 +1,4 @@
+mock entry
+
+Used by DN project images test
+See 'TNP-47 fix: mock repo dev branch missing file' related issue
