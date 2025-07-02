@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # ====Example======================================================================================
+#  && apt-get upgrade -y \
 apt-get update \
-  && apt-get upgrade -y \
   && apt-get install -y \
     vim \
   && apt-get autoremove -y \
