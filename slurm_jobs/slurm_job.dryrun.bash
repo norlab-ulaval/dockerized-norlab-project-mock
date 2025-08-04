@@ -32,7 +32,7 @@ function dna::job_teardown_callback() {
 
   # TODO: Add any instruction that should be executed after 'dna run slurm' exit.
   #  `scancel` is issued.
-  exit ${exit_code:1}
+  exit ${exit_code:-1}
 }
 
 # ....Set job name.................................................................................
