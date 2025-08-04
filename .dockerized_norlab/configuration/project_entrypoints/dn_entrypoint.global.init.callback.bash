@@ -25,3 +25,8 @@ echo -e "Project ${DN_PROJECT_GIT_NAME:?err} specific information: ${MSG_DIMMED_
   && pip --disable-pip-version-check list --exclude hydra-optuna-sweeper | grep -i -e optuna | sed "s;^optuna;${SP}optuna;"
 )
 ${MSG_END_FORMAT}"
+
+# ....Examples: source ROS2 environment variables..................................................
+#dn::source_ros2_underlay_only
+#dn::source_ros2_overlay_only
+dn::source_ros2
