@@ -12,12 +12,6 @@
 #
 # =================================================================================================
 
-
-# ....Runtime debug................................................................................
-#DN_SHOW_DEBUG_INFO=true
-source /dna-lib-container-tools/dn_sanity_checks.bash && dna::user_and_dir_content_sanity_check "runtime"
-
-
 # ....DNA-project internal logic...................................................................
 source /dna-lib-container-tools/project_entrypoints/entrypoint_helper.global.common.bash || exit 1
 source /dna-lib-container-tools/project_entrypoints/entrypoint_helper.global.init.bash || exit 1
