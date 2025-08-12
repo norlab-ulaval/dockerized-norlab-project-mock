@@ -12,8 +12,40 @@
 #
 # =================================================================================================
 
-# (Priority) ToDo: on task end >> delete this line ↓
-tree -aL 2 /dna-lib-container-tools
+#DN_SHOW_DEBUG_INFO=true
+
+# ....Runtime debug................................................................................
+if [[ ${DN_SHOW_DEBUG_INFO} == true ]]; then
+  MSG_WARNING_FORMAT="\033[1;33m"
+  MSG_END_FORMAT="\033[0m"
+  echo -e "${MSG_WARNING_FORMAT}[DN runtime debug]${MSG_END_FORMAT} Check container DN env var..."
+  echo
+  printenv | grep -e DN_
+  echo
+  echo -e "${MSG_WARNING_FORMAT}[DN runtime debug]${MSG_END_FORMAT} Check container available files..."
+  tree -aguL 2 /dna-lib-container-tools
+  echo
+  tree -aguL 1 /project_entrypoints
+  echo
+  tree -aguL 1 /
+  echo
+  tree -aguL 1 "$HOME"
+  echo
+  echo -e "${MSG_WARNING_FORMAT}[DN runtime debug]${MSG_END_FORMAT} Users configuration sanity check..."
+  echo "whoami: $(whoami)"
+  echo "id ${DN_PROJECT_USER}: $(id "${DN_PROJECT_USER}")"
+  echo "id ${DN_SSH_SERVER_USER}: $(id "${DN_SSH_SERVER_USER}")"
+  echo "DN_SSH_SERVER_USER: ${DN_SSH_SERVER_USER}"
+  echo "DN_CONTAINER_TOOLS_LOADED: ${DN_CONTAINER_TOOLS_LOADED}"
+  echo "DEBIAN_FRONTEND: ${DEBIAN_FRONTEND}"
+
+  echo -e "${MSG_WARNING_FORMAT}[DN runtime debug]${MSG_END_FORMAT} Check users setup..."
+  echo "getent passwd root: $(getent passwd root)"
+  echo "getent passwd ${DN_PROJECT_USER}: $(getent passwd "${DN_PROJECT_USER}")"
+  echo "getent passwd ${DN_SSH_SERVER_USER}: $(getent passwd "${DN_SSH_SERVER_USER}")"
+  echo
+fi
+
 
 # ....DNA-project internal logic...................................................................
 source /dna-lib-container-tools/project_entrypoints/entrypoint_helper.global.common.bash || exit 1
