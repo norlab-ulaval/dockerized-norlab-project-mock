@@ -12,6 +12,9 @@
 #
 # =================================================================================================
 
+# (Priority) ToDo: on task end >> delete this line ↓
+tree -aL 2 /dna-lib-container-tools
+
 # ....DNA-project internal logic...................................................................
 source /dna-lib-container-tools/project_entrypoints/entrypoint_helper.global.common.bash || exit 1
 source /dna-lib-container-tools/project_entrypoints/entrypoint_helper.global.init.bash || exit 1
