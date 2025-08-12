@@ -71,5 +71,6 @@ dna::job_setup_callback
 trap dna::job_teardown_callback EXIT
 
 # ====Launch slurm job=============================================================================
+dna version --all
 dna run slurm "${SJOB_ID:?err}" "${dna_run_slurm_flags[@]}" "${hydra_flags[@]}"
 
