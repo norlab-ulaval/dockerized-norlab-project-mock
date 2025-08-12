@@ -20,7 +20,7 @@ if [[ ${DN_SHOW_DEBUG_INFO} == true ]]; then
   MSG_END_FORMAT="\033[0m"
   echo -e "${MSG_WARNING_FORMAT}[DN runtime debug]${MSG_END_FORMAT} Check container DN env var..."
   echo
-  printenv | grep -e DN_ -e PATH -e PYTHONPATH
+  printenv | grep -e DN_ -e DNA_ -e PATH -e PYTHONPATH
   echo
   echo -e "${MSG_WARNING_FORMAT}[DN runtime debug]${MSG_END_FORMAT} Check container available files..."
   echo
