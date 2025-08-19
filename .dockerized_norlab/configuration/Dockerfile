@@ -1,7 +1,7 @@
 # =================================================================================================
 #
-#   👍 You can change code in this file to take advantage of Docker multi-stage build
-#   and docker cache layer mechanism
+#   👍  You can change the code in this file to take advantage of the Docker cache layer mechanism
+#       and the Docker multi-stage build feature.
 #
 # =================================================================================================
 FROM base_image AS user-project-custom-steps
@@ -10,7 +10,7 @@ ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 WORKDIR ${DN_PROJECT_PATH:?'environment variable is not set'}
 
-# USER NOTES: ADD YOUR CODE HERE
+# ADD YOUR CODE HERE
 # ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 # ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
