@@ -43,7 +43,7 @@ SJOB_ID="default"
 
 # ....Hydra app module.............................................................................
 # TODO: Set python module to launch
-hydra_flags+=("launcher/example_app.py")
+hydra_flags+=("launcher/example_app_hparm_optim.py")
 # Note: assume container workdir is `<super-project>/src/`
 
 # ....Optional hydra flags.........................................................................
