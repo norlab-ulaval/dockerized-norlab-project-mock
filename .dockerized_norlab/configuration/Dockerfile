@@ -47,7 +47,8 @@ EOF
 #  - Requires setting PYTHONPATH explicitly in the container
 #  - No need to copy the src code in the container before install
 # ↓ ↓ ↓ UNMUTE ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
-ENV PYTHONPATH=${DN_PROJECT_PATH}${PYTHONPATH:+:${PYTHONPATH}}
+#ENV PYTHONPATH=${DN_PROJECT_PATH}${PYTHONPATH:+:${PYTHONPATH}}
+ENV PYTHONPATH=${DN_PROJECT_PATH}/src:${DN_PROJECT_PATH}/tests:${DN_PROJECT_PATH}/external_data${PYTHONPATH:+:${PYTHONPATH}}
 #COPY ./requirements.txt "${DN_PROJECT_PATH:?err}/requirements.txt"
 #RUN <<EOF
 #  n2st::print_msg "Execute pip install from repository root python requirement file..."
