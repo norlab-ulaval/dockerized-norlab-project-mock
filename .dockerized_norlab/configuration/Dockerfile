@@ -27,34 +27,30 @@ RUN <<EOF
     } || n2st::print_msg_error_and_exit "Failed sanity check!"
 EOF
 
-RUN <<EOF
-    # ....Examples with cuda.......................................................................
-    # Note: Assuming the base image is nvidia cuda enable and has pycuda and pytorch installed
-    if pip -qq show torch; then
-        {
-          echo "..........................................." && \
-          echo "Sanity check" && \
-          python -c "import torch" && \
-          echo "..........................................." ;
-        } || n2st::print_msg_error_and_exit "Failed torch sanity check!"
-        (
-          echo
-          echo "alias dn-pytorch-cuda-check='python3 /ros2_ws/src/dockerized-norlab-project-mock/src/dna_example/try_pytorch.py'"
-          echo
-        ) >> /dockerized-norlab/dockerized-norlab-images/container-tools/dn_bash_alias.bash
-    fi
+# ....Python project recipies: install python requirement from pyproject.toml......................
+# Note:
+#   Copying project source code is required for installing python package in editable mode and
+#   build/install ros package. However, 'DN_PROJECT_PATH' will be overwritten at runtime in develop
+#   image because 'SUPER_PROJECT_ROOT' is mounted to 'DN_PROJECT_PATH'.
+# ↓ ↓ ↓ UNMUTE ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+#COPY  . ${DN_PROJECT_PATH:?err}/
+#RUN <<EOF
+#  n2st::print_msg "Install project via pyproject.toml..."
+#  cd "${DN_PROJECT_PATH}"
+#  python -m pip install --editable . \
+#    || n2st::print_msg_error_and_exit "Failed project install via pyproject.toml!"
+#EOF
 
-    if pip -qq show pycuda; then
-        {
-          echo "..........................................." && \
-          echo "Sanity check" && \
-          python -c "import pycuda" && \
-          echo "..........................................." ;
-        } || n2st::print_msg_error_and_exit "Failed pycuda sanity check!"
-        (
-          echo
-          echo "alias dn-pycuda-check='python3 /ros2_ws/src/dockerized-norlab-project-mock/src/dna_example/try_pycuda.py'"
-          echo
-        ) >> /dockerized-norlab/dockerized-norlab-images/container-tools/dn_bash_alias.bash
-    fi
-EOF
+
+# ....Python project recipies: install python requirement from requirement.txt file................
+# Note:
+#  - Requires setting PYTHONPATH explicitly in the container
+#  - No need to copy the src code in the container before install
+# ↓ ↓ ↓ UNMUTE ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+ENV PYTHONPATH=${DN_PROJECT_PATH}${PYTHONPATH:+:${PYTHONPATH}}
+#COPY ./requirements.txt "${DN_PROJECT_PATH:?err}/requirements.txt"
+#RUN <<EOF
+#  n2st::print_msg "Execute pip install from repository root python requirement file..."
+#  pip3 install --verbose -r "${DN_PROJECT_PATH}/requirements.txt" \
+#    || n2st::print_msg_error_and_exit "Failed pip install from repository root requirement!"
+#EOF
