@@ -1,10 +1,17 @@
 # =================================================================================================
+# DNA python requirements
+#
+# Notes:
+# - This file is used in DNA Dockerfile.project-core-pre via pip install
+# - It is executed after shell.requirements-dna.bash
+#
 # Doc
 #  - Requirements File Format:  https://pip.pypa.io/en/stable/reference/requirements-file-format/
 #  - Requirement Specifiers:  https://pip.pypa.io/en/stable/reference/requirement-specifiers/
 #
 # =================================================================================================
 
-# example
+# ....Example......................................................................................
 pyclean
-
+#hydra-core >= 1.3
+# .................................................................................................
