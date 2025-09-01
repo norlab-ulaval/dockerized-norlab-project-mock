@@ -16,9 +16,8 @@ WORKDIR ${DN_PROJECT_PATH:?'environment variable is not set'}
 # ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 # ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
-# Example
+# ....Example......................................................................................
 RUN <<EOF
-    # ....Examples.................................................................................
     {
         echo "...Sanity check............................" && \
         echo "python version: $(n2st::which_python3_version)" && \
@@ -44,14 +43,26 @@ EOF
 
 # ....Python project recipies: install python requirement from requirement.txt file................
 # Note:
+#  - (pro) No need to copy the src code in the container before install
 #  - Requires setting PYTHONPATH explicitly in the container
-#  - No need to copy the src code in the container before install
 # ↓ ↓ ↓ UNMUTE ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
-#ENV PYTHONPATH=${DN_PROJECT_PATH}${PYTHONPATH:+:${PYTHONPATH}}
-ENV PYTHONPATH=${DN_PROJECT_PATH}/src:${DN_PROJECT_PATH}/tests:${DN_PROJECT_PATH}/external_data${PYTHONPATH:+:${PYTHONPATH}}
+#ENV PYTHONPATH=${DN_PROJECT_PATH}/src${PYTHONPATH:+:${PYTHONPATH}}
 #COPY ./requirements.txt "${DN_PROJECT_PATH:?err}/requirements.txt"
 #RUN <<EOF
 #  n2st::print_msg "Execute pip install from repository root python requirement file..."
 #  pip3 install --verbose -r "${DN_PROJECT_PATH}/requirements.txt" \
 #    || n2st::print_msg_error_and_exit "Failed pip install from repository root requirement!"
 #EOF
+
+# ....ROS project recipies: build ROS workspace....................................................
+# Note:
+#   Copying project source code is required for build/install ros package. However,
+#   'DN_PROJECT_PATH' will be overwritten at runtime in develop image because 'SUPER_PROJECT_ROOT'
+#   is mounted to 'DN_PROJECT_PATH'.
+# ↓ ↓ ↓ UNMUTE ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+COPY  . ${DN_PROJECT_PATH:?err}/
+RUN <<EOF
+  n2st::print_msg "Build/install ROS project..."
+  source /dna-lib-container-tools/dn_project_core.build.aarch_aware_build_ros.bash "${TARGETPLATFORM}" "${BUILDPLATFORM}" "${DN_DEV_WORKSPACE:?err}/src" \
+    || n2st::print_msg_error_and_exit "Failed to build repository ros pkgs!"
+EOF
