@@ -18,10 +18,18 @@
 !**/version.txt
 !**/.git
 
+# DNA artifact and data non-tracked directory
+artifact/*
+data/external_data/*
+data/shared_data/*
+
+# Track README.md files from ignored DNA artifact and data directory so that those required
+# directory exist in vcs
+!artifact/**/README.md
+!datat/**/README.md
+
 # ====Dockerized-NorLab(recommended)===============================================================
-**/external_data/
-**/artifact/
-**/slurm_jobs_logs/*.log
+**/*.log
 
 # ====General======================================================================================
 # ....Repository related...........................................................................
