@@ -1,0 +1,8 @@
+
+services:
+  project-develop:
+    environment:
+      TMP_TEST_OVERRIDE: true
+    ports:
+      - ${DN_TENSORBOARD:-6006}:${DN_TENSORBOARD:-6006} # tensorboard
+      - ${DN_OPTUNA_DASHBOARD:-8888}:${DN_OPTUNA_DASHBOARD:-8888} # optuna-dashboard

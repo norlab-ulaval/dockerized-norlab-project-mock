@@ -1,0 +1,15 @@
+
+services:
+
+  dependent-service:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    environment:
+      TMP_TEST_GLOBAL_OVERRIDE: true
+
+  project-develop:
+    environment:
+      TMP_TEST_GLOBAL_OVERRIDE: true
+    depends_on:
+      - dependent-service
