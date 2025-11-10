@@ -1,0 +1,15 @@
+# =================================================================================================
+#
+# Docker compose project RUN OVERRIDE, version for running on Nvidia Jetson embed computer (arm64)
+#
+# =================================================================================================
+
+services:
+
+  project-develop:
+    labels:
+      norlab.dockerized-norlab.project.service: "develop override"
+
+  project-deploy:
+    labels:
+      norlab.dockerized-norlab.project.service: "deploy override"

@@ -1,0 +1,16 @@
+# =================================================================================================
+#
+# Docker compose project RUN OVERRIDE, version for x86 architecture workstation and embed computer
+# running Ubuntu OS
+#
+# =================================================================================================
+
+services:
+
+  project-develop:
+    labels:
+      norlab.dockerized-norlab.project.service: "develop override"
+
+  project-deploy:
+    labels:
+      norlab.dockerized-norlab.project.service: "deploy override"

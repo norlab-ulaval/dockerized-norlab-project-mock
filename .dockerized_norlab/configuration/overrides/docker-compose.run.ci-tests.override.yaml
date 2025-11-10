@@ -1,0 +1,11 @@
+# =================================================================================================
+#
+# Docker compose project RUN OVERRIDE, version for running on linux server (either arm64 and x86)
+#
+# =================================================================================================
+
+services:
+
+  project-ci-tests:
+    labels:
+      norlab.dockerized-norlab.project.service: "ci-tests override"
