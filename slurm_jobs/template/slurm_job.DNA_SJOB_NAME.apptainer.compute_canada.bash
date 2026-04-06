@@ -58,6 +58,14 @@ DNA_SJOB_NAME="default"
 python_arguments+=("launcher/example.py")
 # Note: container workdir is <DN_PROJECT_PATH>/src/ (set in .env.compute_canada: DN_PROJECT_PATH)
 
+# ....Optional hydra flags.........................................................................
+# --config-path,-cp : Overrides the config_path specified in hydra.main(). (absolute or relative)
+# --config-name,-cn : Overrides the config_name specified in hydra.main()
+# --config-dir,-cd : Adds an additional config dir to the config search path
+#python_arguments+=("--config-path=")
+#python_arguments+=("--config-dir=")
+#python_arguments+=("--config-name=")
+
 # ....HPC server configuration.....................................................................
 SUPER_PROJECT_ROOT="${SUPER_PROJECT_ROOT:-$(pwd)}"
 SIF_PATH="${SIF_PATH:-${SUPER_PROJECT_ROOT}/artifact/apptainer/dockerized-norlab-project-mock-slurm.sif}"
@@ -125,11 +133,3 @@ apptainer exec \
     "${SIF_PATH}" \
     "/dockerized-norlab/project/project-slurm/dn_entrypoint.init.bash" \
     "${python_arguments[@]}"
-
-# ....Optional hydra flags.........................................................................
-# --config-path,-cp : Overrides the config_path specified in hydra.main(). (absolute or relative)
-# --config-name,-cn : Overrides the config_name specified in hydra.main()
-# --config-dir,-cd : Adds an additional config dir to the config search path
-#python_arguments+=("--config-path=")
-#python_arguments+=("--config-dir=")
-#python_arguments+=("--config-name=")
