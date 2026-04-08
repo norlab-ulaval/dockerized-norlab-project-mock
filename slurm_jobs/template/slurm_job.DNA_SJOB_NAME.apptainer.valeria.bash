@@ -47,11 +47,7 @@ function job_teardown_callback() {
   exit "${exit_code:-1}"
 }
 
-# ....Set job name.................................................................................
-# TODO: Set DNA_SJOB_NAME
-DNA_SJOB_NAME="default"
-# Note: Recommend opening an issue tracker task (e.g., YouTrack, GitHub issue, Trello)
-#  and use its issue ID as an DNA_SJOB_NAME.
+
 
 # ....Python module................................................................................
 # TODO: Set python module to launch
