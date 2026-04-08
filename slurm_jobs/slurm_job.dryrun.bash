@@ -2,7 +2,7 @@
 #SBATCH --gres=gpu:0
 #SBATCH --cpus-per-task=2
 #SBATCH --time=0-01:00
-#SBATCH --output=out/%x-%j.out
+#SBATCH --output=artifact/slurm_jobs_logs/%x-%j.out
 
 
 # Note: Flag time format --time=D-HH:MM ->  D=day, HH=hours, MM=minutes
@@ -63,10 +63,13 @@ dna_run_slurm_flags+=("--skip-slurm-force-rebuild")
 dna_run_slurm_flags+=("--hydra-dry-run")
 
 # ====DNA internal=================================================================================
+# ....Set job name.................................................................................\n# Recommend opening an issue tracker task (e.g., YouTrack, GitHub issue, Trello)
+#  and use its issue ID as the DNA_SJOB_NAME.\n\n# Auto-set DNA_SJOB_NAME from the script filename (slurm_job.<name>.bash → <name>)
+DNA_SJOB_NAME="$( basename "${BASH_SOURCE[0]}" | sed 's/^slurm_job\.//;s/\.bash$//' )"\nexport DNA_SJOB_NAME
+
 dna_run_slurm_flags+=("--log-name" "$(basename -s .bash $0)")
 dna_run_slurm_flags+=("--log-path" "artifact/slurm_jobs_logs")
 dna_run_slurm_flags+=("$@")
-export DNA_SJOB_NAME
 dna::job_setup_callback
 trap dna::job_teardown_callback EXIT
 
